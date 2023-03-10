@@ -56,11 +56,13 @@ Overview of StyleGANEX inversion and facial attribute/style editing on unaligned
 
 Video facial attribute editing:
 
-https://user-images.githubusercontent.com/18130694/224262206-c253be38-f1fc-4b79-b824-eb21f90c24cd.mp4
+https://user-images.githubusercontent.com/18130694/224287063-7465a301-4d11-4322-819a-59d548308ce1.mp4
+
+<br/>
 
 Video face toonification:
 
-TBA
+https://user-images.githubusercontent.com/18130694/224287136-7e5ce82d-664f-4a23-8ed3-e7005efb3b24.mp4
 
 ## Citation
 

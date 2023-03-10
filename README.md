@@ -30,7 +30,7 @@ This repository provides the official PyTorch implementation for the following p
 **Clone this repo:**
 ```bash
 git clone https://github.com/williamyang1991/StyleGANEX.git
-cd VToonify
+cd StyleGANEX
 ```
 **Dependencies:**
 

@@ -42,7 +42,7 @@ We have tested on:
 
 ## (1) Inference
 
-Comming soon. We are cleanning our code. :)
+Comming soon. We are cleaning our code. :)
 
 ## (2) Training 
 

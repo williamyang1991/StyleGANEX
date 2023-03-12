@@ -113,7 +113,7 @@ latents = torch.load('./output/FILE_NAME_inversion.pt')
 wplus_hat = latents['wplus'].to(device) # w+
 f_hat = [latents['f'][0].to(device)]    # f
 ```
-
+The `./inference_playground.ipynb` provides some face editing examples based on `wplus_hat` and `f_hat`.
 
 ### Image Translation
 

@@ -24,8 +24,8 @@ This repository provides the official PyTorch implementation for the following p
 
 ## Updates
 
-- [03/2023] This website is created.
 - [03/2023] Inference code is released.
+- [03/2023] This website is created.
 
 
 ## Installation
@@ -138,9 +138,9 @@ Additional notes to consider:
         - For [styleganex_sketch2face.pt](), no pre-processing will be applied.
         - For [styleganex_mask2face.pt](), the input face image, e.g., `./data/ILip77SbmOE.png` will be transformed into a parsing map. The parsing map and its visualization version will be also saved in `./output/`.
     - if specified, directly load input data without pre-processing
-        - For [styleganex_sr/sr32.pt](), input should be downsampled face images, e.g., `./data/ILip77SbmOE_45x45.png`
-        - For [styleganex_sketch2face.pt](), input should be a one-channel sketch image e.g., `./data/234_sketch.jpg`
-        - For [styleganex_mask2face.pt](), input should be a one-channel parsing map e.g., `./data/ILip77SbmOE_mask.png`
+        - For [styleganex_sr/sr32.pt](), the input should be downsampled face images, e.g., `./data/ILip77SbmOE_45x45.png`
+        - For [styleganex_sketch2face.pt](), the input should be a one-channel sketch image e.g., `./data/234_sketch.jpg`
+        - For [styleganex_mask2face.pt](), the input should be a one-channel parsing map e.g., `./data/ILip77SbmOE_mask.png`
 
 
 ### Video Editing
@@ -153,14 +153,14 @@ python video_editing.py --ckpt STYLEGANEX_MODEL_PATH --data_path FACE_INPUT_PATH
 The results are saved in the folder `./output/`.
 
 Additional notes to consider:
-- `--data_path`: input can be either an image or a video.
-- `--scale_factor`: for attribute editing task ([styleganex_edit_hair/age]()), control the editing degree
+- `--data_path`: the input can be either an image or a video.
+- `--scale_factor`: for attribute editing task ([styleganex_edit_hair/age]()), control the editing degree.
 
 <br/>
 
 ## (2) Training 
 
-Code will be released upon the publication of paper.
+The training code will be released upon the publication of the paper.
 
 <br/>
 

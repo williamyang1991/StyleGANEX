@@ -123,6 +123,14 @@ The `./inference_playground.ipynb` provides some face editing examples based on 
 
 `video_editing.py` supports video facial attribute editing and video face toonification.
 
+```python
+python video_editing.py --ckpt STYLEGANEX_MODEL_PATH --data_path FACE_INPUT_PATH
+```
+The results are saved in the folder `./output/`.
+
+Additional notes to consider:
+- `--data_path`: input can be either an image or a video.
+- `--scale_factor`: for video facial attribute editing, control the editing degree
 
 
 ## (2) Training 

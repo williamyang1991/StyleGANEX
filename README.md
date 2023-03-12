@@ -71,7 +71,7 @@ Pre-trained models can be downloaded from [Google Drive](https://drive.google.co
         <td rowspan="2">Pix2pix</td><td><a href="https://drive.google.com/file/d/1L3iRp3UE-_Or0NqzUtqZPLQ9hQ_9yax5/view?usp=share_link">styleganex_sketch2face.pt</a></td><td>pre-trained model for skech-to-face translation</td>
     </tr>  
     <tr>
-        <td><a href="https://drive.google.com/file/d/1rHC63z1tUX63-56RUc0thhHSVAQr8Cf2/view?usp=share_link">styleganex_mask2face.pt</a></td><td>pre-trained model for segmentation mask-to-face translation</td>
+        <td><a href="https://drive.google.com/file/d/1rHC63z1tUX63-56RUc0thhHSVAQr8Cf2/view?usp=share_link">styleganex_mask2face.pt</a></td><td>pre-trained model for parsing map-to-face translation</td>
     </tr>
     <tr>
         <td rowspan="2">Video editing</td><td><a href="https://drive.google.com/file/d/164eD7pafO74xiCCFLzhb56ofOBwIUnpL/view?usp=share_link">styleganex_edit_hair.pt</a></td><td>pre-trained model for hair color editing on videos</td>

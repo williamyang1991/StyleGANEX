@@ -96,6 +96,27 @@ Pre-trained models can be downloaded from [Google Drive](https://drive.google.co
     </tr>      
 </table>
 
+The downloaded models are suggested to be put into `./pretrained_models/`
+
+### StyleGANEX Inversion
+
+We can embed a face image into the latent space of StyleGANEX to obtain its w+ latent code and the first-layer feature f with `inversion.py`.
+
+```python
+python inversion.py --ckpt STYLEGANEX_MODEL_PATH --data_path FACE_IMAGE_PATH
+```
+The results are saved in the folder `./output/`
+
+### Image Translation
+
+`image_translation.py` supports face super-resolution, sketch-to-face translation and parsing map-to-face translation
+
+### Video Editing
+
+`video_editing.py` supports video facial attribute editing and video face toonification.
+
+
+
 ## (2) Training 
 
 Code will be released upon the publication of paper.

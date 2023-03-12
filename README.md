@@ -54,7 +54,9 @@ The notebook will download the necessary pretrained models and run inference on 
 
 ### Pre-trained Models
 
-Pre-trained models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1zGssOxjdklMd_5kdBKV9VkENnS5EXZlx?usp=share_link) or [Hugging Face](https://huggingface.co/PKUWilliamYang/StyleGANEX/tree/main/pretrained_models):
+Pre-trained models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1zGssOxjdklMd_5kdBKV9VkENnS5EXZlx?usp=share_link),
+[Baidu Cloud](https://pan.baidu.com/s/15SZrkvgduUaMI33LJGnEJg?pwd=luck ) (access code: luck)
+or [Hugging Face](https://huggingface.co/PKUWilliamYang/StyleGANEX/tree/main/pretrained_models):
 
 <table>
     <tr>

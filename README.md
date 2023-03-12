@@ -41,6 +41,7 @@ We have tested on:
 - PyTorch 1.7.1
 - Pillow 8.3.1; Matplotlib 3.4.2; opencv-python 4.5.3; Faiss 1.7.1; tqdm 4.61.2; Ninja 1.10.2; dlib 19.24.0
 
+<br/>
 
 ## (1) Inference
 
@@ -154,10 +155,13 @@ Additional notes to consider:
 - `--data_path`: input can be either an image or a video.
 - `--scale_factor`: for video facial attribute editing, control the editing degree
 
+<br/>
 
 ## (2) Training 
 
 Code will be released upon the publication of paper.
+
+<br/>
 
 ## (3) Results
 

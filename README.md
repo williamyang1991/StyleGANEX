@@ -59,34 +59,34 @@ Pre-trained models can be downloaded from [Google Drive](https://drive.google.co
         <th>Task</th><th>Model</th><th>Description</th>
     </tr>
     <tr>
-        <td>Inversion</td><td><a href="">styleganex_inversion.pt</a></td><td>pre-trained model for StyleGANEX inversion</td>
+        <td>Inversion</td><td><a href="https://drive.google.com/file/d/157twOAYihuy_b6l_XrmP7QUOMhkNC2Ii/view?usp=share_link">styleganex_inversion.pt</a></td><td>pre-trained model for StyleGANEX inversion</td>
     </tr>
     <tr>
-        <td rowspan="2">SR</td><td><a href="">styleganex_sr32.pt</a></td><td>pre-trained model specially for 32x face super resolution</td>
+        <td rowspan="2">SR</td><td><a href="https://drive.google.com/file/d/1ewbdY_0fRZS6GIboFcvx6QDBbqHXprvR/view?usp=share_link">styleganex_sr32.pt</a></td><td>pre-trained model specially for 32x face super resolution</td>
     </tr>  
     <tr>
-        <td><a href="">styleganex_sr.pt</a></td><td>pre-trained model for 4x-48x face super resolution</td>
+        <td><a href="https://drive.google.com/file/d/1XQ4vp8DB2dSrvQVj3xifSl4sUGMxr4zK/view?usp=share_link">styleganex_sr.pt</a></td><td>pre-trained model for 4x-48x face super resolution</td>
     </tr>   
     <tr>
-        <td rowspan="2">Pix2pix</td><td><a href="">styleganex_sketch2face.pt</a></td><td>pre-trained model for skech-to-face translation</td>
+        <td rowspan="2">Pix2pix</td><td><a href="https://drive.google.com/file/d/1L3iRp3UE-_Or0NqzUtqZPLQ9hQ_9yax5/view?usp=share_link">styleganex_sketch2face.pt</a></td><td>pre-trained model for skech-to-face translation</td>
     </tr>  
     <tr>
-        <td><a href="">styleganex_mask2face.pt</a></td><td>pre-trained model for segmentation mask-to-face translation</td>
+        <td><a href="https://drive.google.com/file/d/1rHC63z1tUX63-56RUc0thhHSVAQr8Cf2/view?usp=share_link">styleganex_mask2face.pt</a></td><td>pre-trained model for segmentation mask-to-face translation</td>
     </tr>
     <tr>
-        <td rowspan="2">Video editing</td><td><a href="">styleganex_edit_hair.pt</a></td><td>pre-trained model for hair color editing on videos</td>
+        <td rowspan="2">Video editing</td><td><a href="https://drive.google.com/file/d/164eD7pafO74xiCCFLzhb56ofOBwIUnpL/view?usp=share_link">styleganex_edit_hair.pt</a></td><td>pre-trained model for hair color editing on videos</td>
     </tr>  
     <tr>
-        <td><a href="">styleganex_edit_age.pt</a></td><td>pre-trained model for age editing on videos</td>
+        <td><a href="https://drive.google.com/file/d/1tH-vlpn5THyD-HoOQrYGuUENH49daAFX/view?usp=share_link">styleganex_edit_age.pt</a></td><td>pre-trained model for age editing on videos</td>
     </tr>  
     <tr>
-        <td rowspan="3">Video toonification</td><td><a href="">styleganex_toonify_cartoon.pt</a></td><td>pre-trained Cartoon model for video face toonification</td>
+        <td rowspan="3">Video toonification</td><td><a href="https://drive.google.com/file/d/16Kth67C1AX3SjZS3030DChB_eHpqGOsn/view?usp=share_link">styleganex_toonify_cartoon.pt</a></td><td>pre-trained Cartoon model for video face toonification</td>
     </tr>  
     <tr>
-        <td><a href="">styleganex_toonify_arcane.pt</a></td><td>pre-trained Arcane model for video face toonification</td>
+        <td><a href="https://drive.google.com/file/d/1OkCw4mrrCvTnEfPOeUxjv7yFpzzQ5trf/view?usp=share_link">styleganex_toonify_arcane.pt</a></td><td>pre-trained Arcane model for video face toonification</td>
     </tr>   
     <tr>
-        <td><a href="">styleganex_toonify_pixar.pt</a></td><td>pre-trained Pixar model for video face toonification</td>
+        <td><a href="https://drive.google.com/file/d/1_XZjvj-rQvT2q3hiqPZ8gIClMo3ZGVH-/view?usp=share_link">styleganex_toonify_pixar.pt</a></td><td>pre-trained Pixar model for video face toonification</td>
     </tr>   
     <tr>
         <th colspan="2">Supporting model</th><th> </th>

@@ -105,7 +105,15 @@ We can embed a face image into the latent space of StyleGANEX to obtain its w+ l
 ```python
 python inversion.py --ckpt STYLEGANEX_MODEL_PATH --data_path FACE_IMAGE_PATH
 ```
-The results are saved in the folder `./output/`
+The results are saved in the folder `./output/`.
+The results contain a reconstructed image `FILE_NAME_inversion.jpg` and a `FILE_NAME_inversion.pt` file.
+You can obtain w+ latent code and the first-layer feature f by 
+```python 
+latents = torch.load('./output/FILE_NAME_inversion.pt')
+wplus_hat = latents['wplus'].to(device) # w+
+f_hat = [latents['f'][0].to(device)]    # f
+```
+
 
 ### Image Translation
 

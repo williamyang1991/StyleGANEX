@@ -154,7 +154,7 @@ The results are saved in the folder `./output/`.
 
 Additional notes to consider:
 - `--data_path`: input can be either an image or a video.
-- `--scale_factor`: for video facial attribute editing, control the editing degree
+- `--scale_factor`: for attribute editing task ([styleganex_edit_hair/age]()), control the editing degree
 
 <br/>
 

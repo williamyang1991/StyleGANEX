@@ -117,7 +117,29 @@ The `./inference_playground.ipynb` provides some face editing examples based on 
 
 ### Image Translation
 
-`image_translation.py` supports face super-resolution, sketch-to-face translation and parsing map-to-face translation
+`image_translation.py` supports face super-resolution, sketch-to-face translation and parsing map-to-face translation.
+
+```python
+python image_translation.py --ckpt STYLEGANEX_MODEL_PATH --data_path FACE_INPUT_PATH
+```
+The results are saved in the folder `./output/`.
+
+Additional notes to consider:
+- `--parsing_model_ckpt` (default: `pretrained_models/faceparsing.pth`): path to the pre-trained parsing model
+- `--resize_factor` (default: 32): super resolution resize factor
+    - For [styleganex_sr.pt](), should be in [4, 48]
+    - For [styleganex_sr32.pt](), should be 32
+- `--number` (default: 4): output number of multi-modal translation (for sketch/mask-to-face translation task)
+- `--use_raw_data` (default: False): 
+    - if not specified, apply possible pre-processing to the input data
+        - For [styleganex_sr/sr32.pt](), the input face image, e.g., `./data/ILip77SbmOE.png` will be downsampled based on `--resize_factor`. The downsampled image will be also saved in `./output/`.
+        - For [styleganex_sketch2face.pt](), no pre-processing will be applied.
+        - For [styleganex_mask2face.pt](), the input face image, e.g., `./data/ILip77SbmOE.png` will be transformed into a parsing map. The parsing map and its visualization version will be also saved in `./output/`.
+    - if specified, directly load input data without pre-processing
+        - For [styleganex_sr/sr32.pt](), input should be downsampled face images, e.g., `./data/ILip77SbmOE_45x45.png`
+        - For [styleganex_sketch2face.pt](), input should be a one-channel sketch image e.g., `./data/234_sketch.jpg`
+        - For [styleganex_mask2face.pt](), input should be a one-channel parsing map e.g., `./data/ILip77SbmOE_mask.png`
+
 
 ### Video Editing
 

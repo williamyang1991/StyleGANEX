@@ -25,6 +25,7 @@ This repository provides the official PyTorch implementation for the following p
 ## Updates
 
 - [03/2023] This website is created.
+- [03/2023] Inference code is released.
 
 
 ## Installation

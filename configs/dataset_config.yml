@@ -1,0 +1,60 @@
+# dataset and data loader settings
+datasets:
+  train:
+    name: FFHQ
+    type: FFHQDegradationDataset
+    # dataroot_gt: datasets/ffhq/ffhq_512.lmdb
+    dataroot_gt: ../../../../share/shuaiyang/ffhq/realign1280x1280test/
+    io_backend:
+      # type: lmdb
+      type: disk
+
+    use_hflip: true
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+    out_size: 1280
+    scale: 4
+
+    blur_kernel_size: 41
+    kernel_list: ['iso', 'aniso']
+    kernel_prob: [0.5, 0.5]
+    blur_sigma: [0.1, 10]
+    downsample_range: [4, 40]
+    noise_range: [0, 20]
+    jpeg_range: [60, 100]
+
+    # color jitter and gray
+    #color_jitter_prob: 0.3
+    #color_jitter_shift: 20
+    #color_jitter_pt_prob: 0.3
+    #gray_prob: 0.01
+
+    # If you do not want colorization, please set
+    color_jitter_prob: ~
+    color_jitter_pt_prob: ~
+    gray_prob: 0.01
+    gt_gray: True
+
+    crop_components: true
+    component_path: ./pretrained_models/FFHQ_eye_mouth_landmarks_512.pth
+    eye_enlarge_ratio: 1.4
+
+    # data loader
+    use_shuffle: true
+    num_worker_per_gpu: 6
+    batch_size_per_gpu: 4
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    # Please modify accordingly to use your own validation
+    # Or comment the val block if do not need validation during training
+    name: validation
+    type: PairedImageDataset
+    dataroot_lq: datasets/faces/validation/input
+    dataroot_gt: datasets/faces/validation/reference
+    io_backend:
+      type: disk
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+    scale: 1

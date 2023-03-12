@@ -8,6 +8,8 @@ This repository provides the official PyTorch implementation for the following p
 [Shuai Yang](https://williamyang1991.github.io/), [Liming Jiang](https://liming-jiang.com/), [Ziwei Liu](https://liuziwei7.github.io/) and [Chen Change Loy](https://www.mmlab-ntu.com/person/ccloy/)<br>
 [**Project Page**](https://www.mmlab-ntu.com/project/styleganex/) | [**Paper**](#) | [**Supplementary Video**](https://youtu.be/8oK0TXQmxg8) <br>
 
+
+<a href="http://colab.research.google.com/github/williamyang1991/StyleGANEX/blob/master/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="google colab logo"></a>
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=williamyang1991/styleganex)
 <!--![visitors](https://visitor-badge.glitch.me/badge?page_id=williamyang1991/styleganex)-->
 
@@ -36,13 +38,63 @@ cd StyleGANEX
 
 We have tested on:
 - CUDA 10.1
-- PyTorch 1.7.0
-- Pillow 8.3.1; Matplotlib 3.3.4; opencv-python 4.5.3; Faiss 1.7.1; tqdm 4.61.2; Ninja 1.10.2
+- PyTorch 1.7.1
+- Pillow 8.3.1; Matplotlib 3.4.2; opencv-python 4.5.3; Faiss 1.7.1; tqdm 4.61.2; Ninja 1.10.2; dlib 19.24.0
 
 
 ## (1) Inference
 
-Comming soon. We are cleaning our code. :)
+### Inference Notebook 
+<a href="http://colab.research.google.com/github/williamyang1991/StyleGANEX/blob/master/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="google colab logo"></a> 
+
+To help users get started, we provide a Jupyter notebook found in `./inference_playground.ipynb` that allows one to visualize the performance of StyleGANEX.
+The notebook will download the necessary pretrained models and run inference on the images found in `./data/`.
+
+### Pre-trained Models
+
+Pre-trained models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1zGssOxjdklMd_5kdBKV9VkENnS5EXZlx?usp=share_link) or [Hugging Face](https://huggingface.co/PKUWilliamYang/StyleGANEX/tree/main/pretrained_models):
+
+<table>
+    <tr>
+        <th>Task</th><th>Model</th><th>Description</th>
+    </tr>
+    <tr>
+        <td>Inversion</td><td><a href="">styleganex_inversion.pt</a></td><td>pre-trained model for StyleGANEX inversion</td>
+    </tr>
+    <tr>
+        <td rowspan="2">SR</td><td><a href="">styleganex_sr32.pt</a></td><td>pre-trained model specially for 32x face super resolution</td>
+    </tr>  
+    <tr>
+        <td><a href="">styleganex_sr.pt</a></td><td>pre-trained model for 4x-48x face super resolution</td>
+    </tr>   
+    <tr>
+        <td rowspan="2">Pix2pix</td><td><a href="">styleganex_sketch2face.pt</a></td><td>pre-trained model for skech-to-face translation</td>
+    </tr>  
+    <tr>
+        <td><a href="">styleganex_mask2face.pt</a></td><td>pre-trained model for segmentation mask-to-face translation</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Video editing</td><td><a href="">styleganex_edit_hair.pt</a></td><td>pre-trained model for hair color editing on videos</td>
+    </tr>  
+    <tr>
+        <td><a href="">styleganex_edit_age.pt</a></td><td>pre-trained model for age editing on videos</td>
+    </tr>  
+    <tr>
+        <td rowspan="3">Video toonification</td><td><a href="">styleganex_toonify_cartoon.pt</a></td><td>pre-trained Cartoon model for video face toonification</td>
+    </tr>  
+    <tr>
+        <td><a href="">styleganex_toonify_arcane.pt</a></td><td>pre-trained Arcane model for video face toonification</td>
+    </tr>   
+    <tr>
+        <td><a href="">styleganex_toonify_pixar.pt</a></td><td>pre-trained Pixar model for video face toonification</td>
+    </tr>   
+    <tr>
+        <th colspan="2">Supporting model</th><th> </th>
+    </tr>
+    <tr>
+        <td colspan="2"><a href="https://drive.google.com/file/d/1jY0mTjVB8njDh6e0LP_2UxuRK3MnjoIR/view">faceparsing.pth</a></td><td>BiSeNet for face parsing from <a href="https://github.com/zllrunning/face-parsing.PyTorch">face-parsing.PyTorch</a></td>
+    </tr>      
+</table>
 
 ## (2) Training 
 

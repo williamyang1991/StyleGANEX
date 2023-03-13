@@ -187,9 +187,10 @@ https://user-images.githubusercontent.com/18130694/224287136-7e5ce82d-664f-4a23-
 If you find this work useful for your research, please consider citing our paper:
 
 ```bibtex
-@InProceedings{yang2023styleganex,
+@article{yang2023styleganex,
  title = {StyleGANEX: StyleGAN-Based Manipulation Beyond Cropped Aligned Faces},
  author = {Yang, Shuai and Jiang, Liming and Liu, Ziwei and and Loy, Chen Change},
+ journal={arXiv preprint arXiv:2303.06146},
  year = {2023},
 }
 ```

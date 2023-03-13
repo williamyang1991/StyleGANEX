@@ -6,7 +6,7 @@ This repository provides the official PyTorch implementation for the following p
 
 **StyleGANEX: StyleGAN-Based Manipulation Beyond Cropped Aligned Faces**<br>
 [Shuai Yang](https://williamyang1991.github.io/), [Liming Jiang](https://liming-jiang.com/), [Ziwei Liu](https://liuziwei7.github.io/) and [Chen Change Loy](https://www.mmlab-ntu.com/person/ccloy/)<br>
-[**Project Page**](https://www.mmlab-ntu.com/project/styleganex/) | [**Paper**](#) | [**Supplementary Video**](https://youtu.be/8oK0TXQmxg8) <br>
+[**Project Page**](https://www.mmlab-ntu.com/project/styleganex/) | [**Paper**](https://arxiv.org/abs/2303.06146) | [**Supplementary Video**](https://youtu.be/8oK0TXQmxg8) <br>
 
 
 <a href="http://colab.research.google.com/github/williamyang1991/StyleGANEX/blob/master/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="google colab logo"></a>

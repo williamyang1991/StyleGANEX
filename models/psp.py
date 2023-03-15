@@ -21,7 +21,7 @@ def get_keys(d, name):
 
 class pSp(nn.Module):
 
-    def __init__(self, opts):
+    def __init__(self, opts, ckpt=None):
         super(pSp, self).__init__()
         self.set_opts(opts)
         # compute number of style inputs based on the output resolution
@@ -31,7 +31,7 @@ class pSp(nn.Module):
         self.decoder = Generator(self.opts.output_size, 512, 8)
         self.face_pool = torch.nn.AdaptiveAvgPool2d((256, 256))
         # Load weights if needed
-        self.load_weights()
+        self.load_weights(ckpt)
 
     def set_encoder(self):
         if self.opts.encoder_type == 'GradualStyleEncoder':
@@ -44,10 +44,11 @@ class pSp(nn.Module):
             raise Exception('{} is not a valid encoders'.format(self.opts.encoder_type))
         return encoder
 
-    def load_weights(self):
+    def load_weights(self, ckpt=None):
         if self.opts.checkpoint_path is not None:
             print('Loading pSp from checkpoint: {}'.format(self.opts.checkpoint_path))
-            ckpt = torch.load(self.opts.checkpoint_path, map_location='cpu')
+            if ckpt is None:
+                ckpt = torch.load(self.opts.checkpoint_path, map_location='cpu')
             self.encoder.load_state_dict(get_keys(ckpt, 'encoder'), strict=False)
             self.decoder.load_state_dict(get_keys(ckpt, 'decoder'), strict=False)
             self.__load_latent_avg(ckpt)

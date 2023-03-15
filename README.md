@@ -54,6 +54,13 @@ We have tested on:
 To help users get started, we provide a Jupyter notebook found in `./inference_playground.ipynb` that allows one to visualize the performance of StyleGANEX.
 The notebook will download the necessary pretrained models and run inference on the images found in `./data/`.
 
+### Gradio demo
+We also provide a UI for testing our method that is built with gradio. Running the following command in a terminal will launch the demo:
+```
+python app_gradio.py
+```
+This demo is also hosted on [Hugging Face](https://huggingface.co/spaces/PKUWilliamYang/StyleGANEX).
+
 ### Pre-trained Models
 
 Pre-trained models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1zGssOxjdklMd_5kdBKV9VkENnS5EXZlx?usp=share_link),

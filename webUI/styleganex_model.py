@@ -358,7 +358,7 @@ class Model():
             y_hat = self.pspex(x1=x1, x2=x2, use_skip=self.pspex.opts.use_skip, zero_noise=True, resize=False)
             y_hat = torch.clamp(y_hat, -1, 1)
 
-        return self.tensor2np(y_hat[0]), 'Done!'    
+        return self.tensor2np(y_hat[0])    
 
 
     def process_vtoonify(self, input_video: str, style_type: str, frame_num: int) -> tuple[list[np.ndarray], str]:

@@ -10,6 +10,7 @@ This repository provides the official PyTorch implementation for the following p
 
 
 <a href="http://colab.research.google.com/github/williamyang1991/StyleGANEX/blob/master/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="google colab logo"></a>
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/PKUWilliamYang/StyleGANEX)
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=williamyang1991/styleganex)
 <!--![visitors](https://visitor-badge.glitch.me/badge?page_id=williamyang1991/styleganex)-->
 
@@ -24,6 +25,7 @@ This repository provides the official PyTorch implementation for the following p
 
 ## Updates
 
+- [03/2023] Integrated to 🤗 [Hugging Face](https://huggingface.co/spaces/PKUWilliamYang/StyleGANEX). Enjoy the web demo!
 - [03/2023] Inference code is released.
 - [03/2023] This website is created.
 

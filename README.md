@@ -55,7 +55,7 @@ To help users get started, we provide a Jupyter notebook found in `./inference_p
 The notebook will download the necessary pretrained models and run inference on the images found in `./data/`.
 
 ### Gradio demo
-We also provide a UI for testing our method that is built with gradio. Running the following command in a terminal will launch the demo:
+We also provide a UI for testing StyleGANEX that is built with gradio. Running the following command in a terminal will launch the demo:
 ```
 python app_gradio.py
 ```

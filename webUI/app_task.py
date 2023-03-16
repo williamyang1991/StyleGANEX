@@ -189,7 +189,7 @@ def create_demo_vediting(process, max_frame_num = 4):
                 frame_num = gr.Slider(label='Number of frames to edit' + info,
                                     minimum=1,
                                     maximum=max_frame_num,
-                                    value=2,
+                                    value=4,
                                     step=1)   
                 #input_info = gr.Textbox(label='Process Information', interactive=False, value='n.a.')
                 run_button = gr.Button(label='Run')
@@ -226,7 +226,7 @@ def create_demo_vtoonify(process, max_frame_num = 4):
                 frame_num = gr.Slider(label='Number of frames to toonify' + info,
                                     minimum=1,
                                     maximum=max_frame_num,
-                                    value=2,
+                                    value=4,
                                     step=1)            
                 #input_info = gr.Textbox(label='Process Information', interactive=False, value='n.a.')
                 run_button = gr.Button(label='Run')

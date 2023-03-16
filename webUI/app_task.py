@@ -279,7 +279,7 @@ def create_demo_inversion(process, allow_optimization=False):
                                                'Domain Transfer: edvard_munch',
                                                'Domain Transfer: modigliani',
                                               ], 
-                                              label="editing options",
+                                              label="editing options (based on StyleGAN-NADA, InterFaceGAN, LowRankGAN)",
                                               value='None')
                 scale_factor = gr.Slider(label='editing degree (-2~2) for Attribute Editing',
                                     minimum=-2,

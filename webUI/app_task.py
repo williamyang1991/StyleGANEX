@@ -182,8 +182,11 @@ def create_demo_vediting(process, max_frame_num = 4):
                                     maximum=2,
                                     value=1,
                                     step=0.1)
-                frame_num = gr.Slider(label='Number of frames to edit (full video editing is not allowed so as not to slow down the demo, \
-                            but you can duplicate the Space to modify the number limit from 4 to a large value)',
+                info = ''
+                if max_frame_num < 100:
+                    info =  '(full video editing is not allowed so as not to slow down the demo, \
+                            but you can duplicate the Space to modify the number limit to a large value)'
+                frame_num = gr.Slider(label='Number of frames to edit' + info,
                                     minimum=1,
                                     maximum=max_frame_num,
                                     value=2,
@@ -216,12 +219,15 @@ def create_demo_vtoonify(process, max_frame_num = 4):
             with gr.Column():
                 input_video = gr.Video(source='upload', mirror_webcam=False, type='filepath') 
                 style_type = gr.Radio(label='Style Type', choices=['Pixar','Cartoon','Arcane'], value='Pixar')
-                frame_num = gr.Slider(label='Number of frames to toonify (full video toonification is not allowed so as not to slow down the demo, \
-                            but you can duplicate the Space to modify the number limit from 4 to a large value)',
+                info = ''
+                if max_frame_num < 100:
+                    info =  '(full video toonify is not allowed so as not to slow down the demo, \
+                            but you can duplicate the Space to modify the number limit from 4 to a large value)'
+                frame_num = gr.Slider(label='Number of frames to toonify' + info,
                                     minimum=1,
                                     maximum=max_frame_num,
                                     value=2,
-                                    step=1)                
+                                    step=1)            
                 #input_info = gr.Textbox(label='Process Information', interactive=False, value='n.a.')
                 run_button = gr.Button(label='Run')
                 gr.Examples(
@@ -250,9 +256,12 @@ def create_demo_inversion(process, allow_optimization=False):
         with gr.Row():
             with gr.Column():
                 input_image = gr.Image(source='upload', type='filepath') 
-                optimize = gr.Radio(label='Whether optimize latent (latent optimization is not allowed so as not to slow down the demo, \
-                but you can duplicate the Space to modify the option or directly upload an optimized latent file. \
-                The file can be computed by inversion.py from the github page or colab)', choices=['No optimization','Latent optimization'], 
+                info = ''
+                if allow_optimization == False:
+                    info = ' (latent optimization is not allowed so as not to slow down the demo, \
+                    but you can duplicate the Space to modify the option or directly upload an optimized latent file. \
+                    The file can be computed by inversion.py from the github page or colab)'
+                optimize = gr.Radio(label='Whether optimize latent' + info, choices=['No optimization','Latent optimization'], 
                                     value='No optimization', interactive=allow_optimization)
                 input_latent = gr.File(label='Optimized latent code (optional)', file_types=[".pt"])
                 editing_options = gr.Dropdown(['None', 'Style Mixing', 

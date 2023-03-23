@@ -73,8 +73,9 @@ if __name__ == "__main__":
         frame = cv2.imread(image_path)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         paras = get_video_crop_parameter(frame, landmarkpredictor)
-        if paras is None:
-            return
+        assert paras is not None, 'StyleGANEX uses dlib.get_frontal_face_detector but sometimes it fails to detect a face. \
+                               You can try several times or use other videos until a face is detected, \
+                               then switch back to the original video.'
         h,w,top,bottom,left,right,scale = paras
         H, W = int(bottom-top), int(right-left)
         frame = cv2.resize(frame, (w, h))[top:bottom, left:right]

@@ -93,8 +93,9 @@ if __name__ == "__main__":
             tmp = PIL.Image.fromarray(np.uint8(frame)).resize((int(y) * args.resize_factor // 4, int(x) * args.resize_factor // 4))
             frame = np.array(tmp)
         paras = get_video_crop_parameter(frame, landmarkpredictor)
-        if paras is None:
-            pass#return
+        assert paras is not None, 'StyleGANEX uses dlib.get_frontal_face_detector but sometimes it fails to detect a face. \
+                               You can try several times or use other videos until a face is detected, \
+                               then switch back to the original video.'
         h,w,top,bottom,left,right,scale = paras
         H, W = int(bottom-top), int(right-left)
         frame = cv2.resize(frame, (w, h))[top:bottom, left:right]
@@ -120,8 +121,9 @@ if __name__ == "__main__":
             frame = cv2.imread(image_path)
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             paras = get_video_crop_parameter(frame, landmarkpredictor)        
-            if paras is None:
-                pass#return
+            assert paras is not None, 'StyleGANEX uses dlib.get_frontal_face_detector but sometimes it fails to detect a face. \
+                               You can try several times or use other videos until a face is detected, \
+                               then switch back to the original video.'
             h,w,top,bottom,left,right,scale = paras
             H, W = int(bottom-top), int(right-left)
             frame = cv2.resize(frame, (w, h))[top:bottom, left:right]        
@@ -141,8 +143,7 @@ if __name__ == "__main__":
         save_image(x1_viz, save_name+'_input_viz.jpg')
         x2 = None    
     else:
-        print('The input model %s does not support image translation task'%(args.ckpt))
-        pass
+        assert False, 'The input model %s does not support image translation task'%(args.ckpt)
 
     print('Load models successfully!')
     

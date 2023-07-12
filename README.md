@@ -176,33 +176,153 @@ The training code will be released upon the publication of the paper.
 <br/>
 
 <!--
+
+Please download the pre-trained models to support the training of StyleGANEX
+| Path | Description
+| :--- | :----------
+|[original_stylegan](https://drive.google.com/file/d/1EM87UquaoQmk17Q8d5kYIAHqu0dkYqdT/view)| StyleGAN trained with the FFHQ dataset
+|[toonify_model](https://drive.google.com/drive/folders/1GZQ6Gs5AzJq9lUL-ldIQexi0JYPKNy8b) | StyleGAN finetuned on cartoon dataset for image toonification ([cartoon](https://drive.google.com/file/d/1w7BJDiSw5_ybelv7jL_Jeu1T-oWEWUmH/view?usp=drive_link), [pixar](https://drive.google.com/file/d/1phftRYbsp34pL5Yqapz3c_Wv0G4L0vy2/view?usp=drive_link), [arcane](https://drive.google.com/file/d/1HysdpShIAbHtf6T9R-hVULjUShgA5AL1/view?usp=drive_link))
+|[original_psp_encoder](https://drive.google.com/file/d/1bMTNWkh5LArlaWSc_wa8VKyq2V42T2z0/view?usp=sharing)  | pSp trained with the FFHQ dataset for StyleGAN inversion.
+|[pretrained encoder]()  | StyleGANEX encoder pretrained with the synthetic data for StyleGAN inversion.
+|[styleganex_encoder](https://drive.google.com/file/d/157twOAYihuy_b6l_XrmP7QUOMhkNC2Ii/view?usp=share_link)  | StyleGANEX encoder trained with the FFHQ dataset for StyleGANEX inversion.
+|[editing_vector]()  | Editing vectors for editing face attributes
+|[augmentation_vector]()  | Editing vectors for data augmentation
+
 The main training script can be found in `scripts/train.py`.   
 Intermediate training results are saved to `opts.exp_dir`. This includes checkpoints, train outputs, and test outputs.  
 
-#### Training the pSp Encoder
-First pretrain encoder on synthetic 1024x1024 images
+#### Training the styleganex encoder
+First pretrain encoder on synthetic 1024x1024 images. You can download our pretrained encoder [here]()
 ```
-python scripts/pretrain.py
---exp_dir=/path/to/experiment
---ckpt=/path/to/original_psp_ffhq_encode
+python scripts/pretrain.py \
+--exp_dir=/path/to/experiment \
+--ckpt=/path/to/[original_psp_encoder](https://drive.google.com/file/d/1bMTNWkh5LArlaWSc_wa8VKyq2V42T2z0/view?usp=sharing)
 ```
-Then finetune encoder on real normal FoV images
+Then finetune encoder on real normal FoV images based on the [pretrained encoder]()
 ```
-python scripts/train.py
---dataset_type=ffhq_encode
---exp_dir=/path/to/experiment
---checkpoint_path=/path/to/pretrained_encoder
---max_steps=100000
---workers=8
---batch_size=8
---val_interval=2500 
---save_interval=50000
---start_from_latent_avg 
---id_lambda=0.1 
---w_norm_lambda=0.001 
---affine_augment 
---random_crop 
+python scripts/train.py \
+--dataset_type=ffhq_encode \
+--exp_dir=/path/to/experiment \
+--checkpoint_path=/path/to/pretrained_styleganex_encoder \
+--max_steps=100000 \
+--workers=8 \
+--batch_size=8 \
+--val_interval=2500 \
+--save_interval=50000 \
+--start_from_latent_avg \
+--id_lambda=0.1 \
+--w_norm_lambda=0.001 \
+--affine_augment \
+--random_crop \
 --crop_face
+```
+#### Sketch to Face
+```
+python scripts/train.py \
+--dataset_type=ffhq_sketch_to_face \
+--exp_dir=/path/to/experiment \
+--stylegan_weights=/path/to/[original_stylegan](https://drive.google.com/file/d/1EM87UquaoQmk17Q8d5kYIAHqu0dkYqdT/view) \
+--max_steps=100000 \
+--workers=8 \
+--batch_size=8 \
+--val_interval=2500 \
+--save_interval=10000 \
+--start_from_latent_avg \
+--w_norm_lambda=0.005 \
+--affine_augment \
+--random_crop \
+--crop_face \
+--use_skip \
+--skip_max_layer=1 \
+--label_nc=1 \
+--input_nc=1 \
+--use_latent_mask
+```
+#### Segmentation Map to Face
+```
+python scripts/train.py \
+--dataset_type=ffhq_seg_to_face \
+--exp_dir=/path/to/experiment \
+--stylegan_weights=/path/to/[original_stylegan](https://drive.google.com/file/d/1EM87UquaoQmk17Q8d5kYIAHqu0dkYqdT/view) \
+--max_steps=100000 \
+--workers=8 \
+--batch_size=8 \
+--val_interval=2500 \
+--save_interval=10000 \
+--start_from_latent_avg \
+--w_norm_lambda=0.005 \
+--affine_augment \
+--random_crop \
+--crop_face \
+--use_skip \
+--skip_max_layer=2 \
+--label_nc=19 \
+--input_nc=19 \
+--use_latent_mask 
+```
+#### Super Resolution
+``` 
+python scripts/train.py \
+--dataset_type=ffhq_super_resolution \
+--exp_dir=/path/to/experiment \
+--checkpoint_path=/path/to/[styleganex_encoder](https://drive.google.com/file/d/157twOAYihuy_b6l_XrmP7QUOMhkNC2Ii/view?usp=share_link) \
+--max_steps=100000 \
+--workers=4 \
+--batch_size=4 \
+--val_interval=2500 \
+--save_interval=10000 \
+--start_from_latent_avg \
+--adv_lambda=0.1 \
+--affine_augment \
+--random_crop \
+--crop_face \
+--use_skip \
+--skip_max_layer=4 \
+--resize_factors=8
+```
+For one model supporting multiple resize factors, set `--skip_max_layer=2` and `--resize_factors=1,2,4,8,16`
+#### Video Editing
+```
+python scripts/train.py \
+--dataset_type=ffhq_edit \
+--exp_dir=/path/to/experiment \
+--checkpoint_path=/path/to/[styleganex_encoder](https://drive.google.com/file/d/157twOAYihuy_b6l_XrmP7QUOMhkNC2Ii/view?usp=share_link) \
+--max_steps=100000 \
+--workers=2 \
+--batch_size=2 \
+--val_interval=2500 \
+--save_interval=10000 \
+--start_from_latent_avg \
+--adv_lambda=0.1 \
+--tmp_lambda=30 \
+--affine_augment \
+--crop_face \
+--use_skip \
+--skip_max_layer=7 \
+--editing_w_path=/path/to/editing_vector \
+--direction_path=/path/to/augmentation_vector \
+--use_att=1 \
+--generate_training_data
+```
+#### Video Toonification
+```
+python scripts/train.py \
+--dataset_type=toonify \
+--exp_dir=/path/to/experiment \
+--checkpoint_path=/path/to/[styleganex_encoder](https://drive.google.com/file/d/157twOAYihuy_b6l_XrmP7QUOMhkNC2Ii/view?usp=share_link) \
+--max_steps=50000 \
+--workers=2 \
+--batch_size=2 \
+--val_interval=2500 \
+--save_interval=10000 \
+--start_from_latent_avg \
+--adv_lambda=0.1 \
+--tmp_lambda=30 \
+--affine_augment \
+--crop_face \
+--use_skip \
+--skip_max_layer=7 \
+--toonify_weights=/path/to/toonify_model
 ```
 -->
 

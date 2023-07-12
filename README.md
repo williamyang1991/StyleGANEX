@@ -175,6 +175,37 @@ The training code will be released upon the publication of the paper.
 
 <br/>
 
+<!--
+The main training script can be found in `scripts/train.py`.   
+Intermediate training results are saved to `opts.exp_dir`. This includes checkpoints, train outputs, and test outputs.  
+
+#### Training the pSp Encoder
+First pretrain encoder on synthetic 1024x1024 images
+```
+python scripts/pretrain.py
+--exp_dir=/path/to/experiment
+--ckpt=/path/to/original_psp_ffhq_encode
+```
+Then finetune encoder on real normal FoV images
+```
+python scripts/train.py
+--dataset_type=ffhq_encode
+--exp_dir=/path/to/experiment
+--checkpoint_path=/path/to/pretrained_encoder
+--max_steps=100000
+--workers=8
+--batch_size=8
+--val_interval=2500 
+--save_interval=50000
+--start_from_latent_avg 
+--id_lambda=0.1 
+--w_norm_lambda=0.001 
+--affine_augment 
+--random_crop 
+--crop_face
+```
+-->
+
 ## (3) Results
 
 Overview of StyleGANEX inversion and facial attribute/style editing on unaligned faces:

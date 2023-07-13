@@ -183,8 +183,8 @@ The training code will be released upon the publication of the paper.
     - Finally, refer to `configs/data_configs.py` for the source/target data paths for the train and test sets
       as well as the transforms.
 - If you wish to experiment with your own dataset, you can simply make the necessary adjustments in 
-    1. `data_configs.py` to define your data paths.
-    2. `transforms_configs.py` to define your own data transforms.
+    - `data_configs.py` to define your data paths.
+    - `transforms_configs.py` to define your own data transforms.
     
 As an example, assume we wish to run encoding using ffhq (`dataset_type=ffhq_encode`). 
 We first go to `configs/paths_config.py` and define:
@@ -209,14 +209,19 @@ DATASETS = {
 ``` 
 When defining our datasets, we will take the values in the above dictionary.
 
-#### Downloading supporting models
+The 1280x1280 ffhq images can be obtain by the modified script of official ffhq:
+- Download the in-the-wild images with `python script/download_ffhq1280.py --wilds`
+- Reproduce the aligned 1280×1280 images wiht `python script/download_ffhq1280.py --align`
+- 320x320 ffhq images can be obtained by setting `output_size=320, transform_size=1280` in Line 272 of download_ffhq1280.py
+
+### Downloading supporting models
 Please download the pre-trained models to support the training of StyleGANEX
 | Path | Description
 | :--- | :----------
 |[original_stylegan](https://drive.google.com/file/d/1EM87UquaoQmk17Q8d5kYIAHqu0dkYqdT/view)| StyleGAN trained with the FFHQ dataset
 |[toonify_model](https://drive.google.com/drive/folders/1GZQ6Gs5AzJq9lUL-ldIQexi0JYPKNy8b) | StyleGAN finetuned on cartoon dataset for image toonification ([cartoon](https://drive.google.com/file/d/1w7BJDiSw5_ybelv7jL_Jeu1T-oWEWUmH/view?usp=drive_link), [pixar](https://drive.google.com/file/d/1phftRYbsp34pL5Yqapz3c_Wv0G4L0vy2/view?usp=drive_link), [arcane](https://drive.google.com/file/d/1HysdpShIAbHtf6T9R-hVULjUShgA5AL1/view?usp=drive_link))
 |[original_psp_encoder](https://drive.google.com/file/d/1bMTNWkh5LArlaWSc_wa8VKyq2V42T2z0/view?usp=sharing)  | pSp trained with the FFHQ dataset for StyleGAN inversion.
-|[pretrained encoder](https://drive.google.com/file/d/1RkQbKZUoTSBKRPwAcpXCPmLExIIs84eO/view?usp=drive_link)  | StyleGANEX encoder pretrained with the synthetic data for StyleGAN inversion.
+|[pretrained_encoder](https://drive.google.com/file/d/1RkQbKZUoTSBKRPwAcpXCPmLExIIs84eO/view?usp=drive_link)  | StyleGANEX encoder pretrained with the synthetic data for StyleGAN inversion.
 |[styleganex_encoder](https://drive.google.com/file/d/157twOAYihuy_b6l_XrmP7QUOMhkNC2Ii/view?usp=share_link)  | StyleGANEX encoder trained with the FFHQ dataset for StyleGANEX inversion.
 |[editing_vector](https://drive.google.com/drive/folders/1zGssOxjdklMd_5kdBKV9VkENnS5EXZlx?usp=share_link)  | Editing vectors for editing face attributes ([age](https://drive.google.com/file/d/1j2373q_xETMJoJGaLQriLrzzzpTQdgWD/view?usp=drive_link), [hair color](https://drive.google.com/file/d/1qCelrIaF4GieKqjwvi5siQbYwKTzqK4M/view?usp=drive_link))
 |[augmentation_vector](https://drive.google.com/file/d/1cOspde7cWY7AYsTQ0X4_DXRfv_hdZ2Y0/view?usp=drive_link)  | Editing vectors for data augmentation
@@ -224,20 +229,21 @@ Please download the pre-trained models to support the training of StyleGANEX
 The main training script can be found in `scripts/train.py`.   
 Intermediate training results are saved to `opts.exp_dir`. This includes checkpoints, train outputs, and test outputs.  
 
+### Training styleganex
 #### Training the styleganex encoder
-First pretrain encoder on synthetic 1024x1024 images. You can download our pretrained encoder [here]()
+First pretrain encoder on synthetic 1024x1024 images. You can download our pretrained encoder [here](https://drive.google.com/file/d/1RkQbKZUoTSBKRPwAcpXCPmLExIIs84eO/view?usp=drive_link)
 ```
 python scripts/pretrain.py \
 --exp_dir=/path/to/experiment \
 --ckpt=/path/to/original_psp_encoder \
 --max_steps=2000
 ```
-Then finetune encoder on real normal FoV images based on the [pretrained encoder]()
+Then finetune encoder on real 1280x1280 ffhq images based on the [pretrained encoder](https://drive.google.com/file/d/1RkQbKZUoTSBKRPwAcpXCPmLExIIs84eO/view?usp=drive_link)
 ```
 python scripts/train.py \
 --dataset_type=ffhq_encode \
 --exp_dir=/path/to/experiment \
---checkpoint_path=/path/to/pretrained_styleganex_encoder \
+--checkpoint_path=/path/to/pretrained_encoder \
 --max_steps=100000 \
 --workers=8 \
 --batch_size=8 \

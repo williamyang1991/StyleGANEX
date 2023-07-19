@@ -4,9 +4,6 @@ Scripts to convert rosinality/stylegan2-pytorch to the CPU compatible format
 
 If you would like to use CPU for testing or have a problem regarding the cpp extention (fused and upfirdn2d), please make the following changes:
 
-Change `model.stylegan2.op_old`  to `model.stylegan2.op`
-https://github.com/williamyang1991/VToonify/blob/01b383efc00007f9b069585db41a7d31a77a8806/util.py#L14
+Change `models.stylegan2.op_old`  to `models.stylegan2.op`
 
-https://github.com/williamyang1991/VToonify/blob/01b383efc00007f9b069585db41a7d31a77a8806/model/simple_augment.py#L12
-
-https://github.com/williamyang1991/VToonify/blob/01b383efc00007f9b069585db41a7d31a77a8806/model/stylegan/model.py#L11
+https://github.com/williamyang1991/StyleGANEX/blob/73b580cc7eb757e36701c094456e9ee02078d03e/models/stylegan2/model.py#L8

@@ -6,6 +6,7 @@ This repository provides the official PyTorch implementation for the following p
 
 **StyleGANEX: StyleGAN-Based Manipulation Beyond Cropped Aligned Faces**<br>
 [Shuai Yang](https://williamyang1991.github.io/), [Liming Jiang](https://liming-jiang.com/), [Ziwei Liu](https://liuziwei7.github.io/) and [Chen Change Loy](https://www.mmlab-ntu.com/person/ccloy/)<br>
+In ICCV 2023. <br>
 [**Project Page**](https://www.mmlab-ntu.com/project/styleganex/) | [**Paper**](https://arxiv.org/abs/2303.06146) | [**Supplementary Video**](https://youtu.be/8oK0TXQmxg8) <br>
 
 
@@ -171,11 +172,6 @@ Additional notes to consider:
 
 ## (2) Training 
 
-The training code will be released upon the publication of the paper.
-
-<br/>
-
-<!--
 ### Preparing your Data
 - As with pSp, we provide support for numerous datasets and experiments (encoding, translation, etc.).
     - Refer to `configs/paths_config.py` to define the necessary data paths and model paths for training and evaluation. 
@@ -230,6 +226,11 @@ The main training script can be found in `scripts/train.py`.
 Intermediate training results are saved to `opts.exp_dir`. This includes checkpoints, train outputs, and test outputs.  
 
 ### Training styleganex
+
+Note: Our default code is a CPU-compatible version. You can switch to a more efficient version by using cpp extention. 
+To do so, please change `models.stylegan2.op` to `models.stylegan2.op_old`
+https://github.com/williamyang1991/StyleGANEX/blob/73b580cc7eb757e36701c094456e9ee02078d03e/models/stylegan2/model.py#L8
+
 #### Training the styleganex encoder
 First pretrain encoder on synthetic 1024x1024 images. You can download our pretrained encoder [here](https://drive.google.com/file/d/1RkQbKZUoTSBKRPwAcpXCPmLExIIs84eO/view?usp=drive_link)
 ```
@@ -364,7 +365,6 @@ python scripts/train.py \
 --skip_max_layer=7 \
 --toonify_weights=/path/to/toonify_model
 ```
--->
 
 ## (3) Results
 
@@ -387,10 +387,10 @@ https://user-images.githubusercontent.com/18130694/224287136-7e5ce82d-664f-4a23-
 If you find this work useful for your research, please consider citing our paper:
 
 ```bibtex
-@article{yang2023styleganex,
+@inproceedings{yang2023styleganex,
  title = {StyleGANEX: StyleGAN-Based Manipulation Beyond Cropped Aligned Faces},
  author = {Yang, Shuai and Jiang, Liming and Liu, Ziwei and and Loy, Chen Change},
- journal = {arXiv preprint arXiv:2303.06146},
+ booktitle = {ICCV},
  year = {2023},
 }
 ```

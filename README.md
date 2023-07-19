@@ -26,6 +26,8 @@ In ICCV 2023. <br>
 
 ## Updates
 
+- [07/2023] Training code is released.
+- [07/2023] The paper is accepted to ICCV 2023 😁!
 - [03/2023] Integrated to 🤗 [Hugging Face](https://huggingface.co/spaces/PKUWilliamYang/StyleGANEX). Enjoy the web demo!
 - [03/2023] Inference code is released.
 - [03/2023] This website is created.

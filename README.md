@@ -368,6 +368,13 @@ python scripts/train.py \
 --toonify_weights=/path/to/toonify_model
 ```
 
+### Additional Notes
+- See `options/train_options.py` for all training-specific flags. 
+- If you wish to generate images from segmentation maps, please specify `--label_nc=N`  and `--input_nc=N` where `N` 
+is the number of semantic categories. 
+- Similarly, for generating images from sketches, please specify `--label_nc=1` and `--input_nc=1`.
+- Specifying `--label_nc=0` (the default value), will directly use the RGB colors as input.
+
 ## (3) Results
 
 Overview of StyleGANEX inversion and facial attribute/style editing on unaligned faces:

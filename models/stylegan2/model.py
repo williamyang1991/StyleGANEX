@@ -230,7 +230,7 @@ class ModulatedConv2d(nn.Module):
 
         fan_in = in_channel * kernel_size ** 2
         self.scale = 1 / math.sqrt(fan_in)
-        self.padding = kernel_size // 2 + dilation - 1 ##### modified
+        self.padding = (kernel_size - 1) // 2 * dilation ##### modified
 
         self.weight = nn.Parameter(
             torch.randn(1, out_channel, in_channel, kernel_size, kernel_size)
@@ -657,7 +657,7 @@ class ConvLayer(nn.Sequential):
 
         else:
             stride = 1
-            self.padding = kernel_size // 2 + dilation-1 ## modified
+            self.padding = (kernel_size - 1) // 2 * dilation ## modified
 
         layers.append(
             EqualConv2d(
